@@ -115,6 +115,7 @@ with tab2:
         incendiomonth=dfallincendios['MONTH'].value_counts().sort_index()
         incendiomonth.rename(index=dict(zip(range(1,13), nombres_meses)),inplace=True)
         fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500)
+        fig.update_coloraxes(showscale=False)
         fig.update_layout(showlegend=False)
         fig
 
