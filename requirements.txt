@@ -115,7 +115,6 @@ odfpy==1.4.1
 openai==0.27.1
 openpyxl==3.1.0
 orjson==3.8.8
-ortools==9.6.2534
 packaging==23.0
 pandas==1.5.3
 parso==0.8.3
@@ -130,7 +129,7 @@ plotly==5.13.0
 plotly-express==0.4.1
 plotly-resampler==0.8.3.2
 pmdarima==2.0.3
-protobuf==4.21.12
+protobuf==3.19
 prettytable==3.7.0
 prompt-toolkit==3.0.37
 psutil==5.9.4
