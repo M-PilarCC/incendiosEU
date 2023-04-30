@@ -115,6 +115,7 @@ with tab2:
         incendiomonth=dfallincendios['MONTH'].value_counts().sort_index()
         incendiomonth.rename(index=dict(zip(range(1,13), nombres_meses)),inplace=True)
         fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500)
+        fig.update_layout(showlegend=False)
         fig
 
         
@@ -123,4 +124,6 @@ with tab2:
         lat = 'LATITUD',     color='MONTH',
                   color_continuous_scale=px.colors.cyclical.IceFire, zoom=5,height=500,width=500)
     fig.update_layout(mapbox_style="open-street-map")
+    fig.update_layout(showlegend=False)
+    fig.update_coloraxes(showscale=False)
     fig
