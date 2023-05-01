@@ -23,7 +23,7 @@ import plotly.graph_objects as go
 
 #python3 -m streamlit run incendios.py
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
-st.set_page_config(page_title='incendiosEU', layout='wide',page_icon='🔥')
+st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
 #---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
@@ -66,7 +66,7 @@ with col2:
         dfaco=dfacoi.groupby(['Name','YEAR']).sum()
         df_acumulado = dfaco.groupby('Name')['AREA_HA'].cumsum().reset_index()
         dfacc=df_acumulado[df_acumulado['AREA_HA']>300000]
-        fig = px.line(dfacc, x="YEAR", y='AREA_HA', color='Name',template='plotly_dark',width=750,height=550,title='qué paises tienen mas superficie quemada')
+        fig = px.line(dfacc, x="YEAR", y='AREA_HA', color='Name',template='plotly_dark',width=750,height=550,title='¿qué paises tienen más superficie quemada?')
         st.plotly_chart(fig,use_container_width=True)
 
 
@@ -75,8 +75,9 @@ dfkm2=pd.read_csv('data/paiseslandcoverHA.csv')
 dfkm2['percentage'] = dfkm2['AREA_HA']*(100/dfkm2['Total'])
 
 barchart=px.bar(dfkm2,x=dfkm2[' name'],y=dfkm2['Total'],width=1300, height=500,color=dfkm2['percentage'],template='plotly_dark',
-                text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentaje de superficie quemada')
+                text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentajes de superficie total')
 barchart.update_layout(showlegend=True)
+barchart.update_coloraxes(showscale=False)
 st.plotly_chart(barchart,use_container_width=True)
 
 
@@ -122,7 +123,7 @@ col=[ 'BROADLEAVED', 'CONIFER', 'MIXED',
        'ARTIFSURF', 'OTHERLC']
 dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
 tipovege=dfm["categoria_mayor"] .value_counts()
-fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegeaticon mayoritaria en la superficie quemada')
+fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegetación mayoritaria en la superficie quemada')
 st.plotly_chart(fig,use_container_width=True)
 
 
