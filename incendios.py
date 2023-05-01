@@ -30,9 +30,6 @@ st.image("img/inc4.png",width=500, use_column_width=True)
 #---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
 dfm=pd.read_csv(r'data/dfprueba.csv')
 
-filtro_año= st.sidebar.selectbox("PROVINCIA", dfm[dfm['PROVINCE']==filtro_procinvia]['YEAR'].unique())
-
-agree = st.sidebar.checkbox('todos los años, de todo el pais')
 # --------------------------------------------------------------DATOS mapa-------------------------------------------------------------------------------------#
 lats2018 = dfm['LATITUD'].tolist() #guardamos la latitud
 lons2018 = dfm['LONGITUD'].tolist()#guarfdamos longitudes
