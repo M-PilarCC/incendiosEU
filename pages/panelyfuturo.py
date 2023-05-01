@@ -41,7 +41,7 @@ viento = st.sidebar.slider('Cantidad de viento',1.0, 100.0)
 rh = st.sidebar.slider('Cantidad de humedad',1.0, 100.0)
 
 #python -m streamlit run incendios.py
-tab1, tab2= st.tabs (['panel BI','futuro'])  
+tab1, tab2,tab3= st.tabs (['panel BI','futuro','final])  
 
 #-----------------------------------------------------------------------------------POWER BI------
 with tab1:
@@ -67,7 +67,7 @@ with tab2:
 #------------------------------
     st.title('')
    
-    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>IPREDICCION NÚMERO INCENDIOS ANUAL </center></h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCION NÚMERO INCENDIOS ANUAL </center></h4>", unsafe_allow_html=True)
     st.title('')
     
     forecast = pd.read_csv('data/forecast.csv')
@@ -78,3 +78,8 @@ with tab2:
     fig.update_xaxes(title='Años')
     fig.update_yaxes(title='nº de incendios')
     st.plotly_chart(fig,use_container_width=True)
+                           
+                           
+ with tab2:
+    st.title('')  
+    st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
