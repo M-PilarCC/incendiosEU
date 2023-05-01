@@ -31,7 +31,7 @@ dfm=pd.read_csv(r'data/dfprueba.csv')
 
 agree = st.sidebar.checkbox('para ver la web origen de los datos')
 if agree:
-    st.write('[link](https://effis.jrc.ec.europa.eu/')
+    st.sidebar.write('[link](https://effis.jrc.ec.europa.eu/')
 # --------------------------------------------------------------DATOS mapa-------------------------------------------------------------------------------------#
 lats2018 = dfm['LATITUD'].tolist() #guardamos la latitud
 lons2018 = dfm['LONGITUD'].tolist()#guarfdamos longitudes
