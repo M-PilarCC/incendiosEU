@@ -24,7 +24,6 @@ import plotly.graph_objects as go
 #python3 -m streamlit run incendios.py
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
 st.set_page_config(page_title='incendies', layout='wide',page_icon='🔥')
-
 st.image("img/inc4.png",width=500, use_column_width=True)
 
 #---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
