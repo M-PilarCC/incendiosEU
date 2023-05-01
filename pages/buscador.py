@@ -25,7 +25,7 @@ import plotly.graph_objects as go
 #python -m streamlit run incendios.py
 
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
-st.set_page_config(page_title='incendiosEU', layout='wide',page_icon='🔥')
+st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 dfm=pd.read_csv(r'data/dfpruebaHA.csv')
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
@@ -99,7 +99,7 @@ with tab2:
     with col1:
         provinvias=dfallincendios['PROVINCE'].value_counts()
         provinvias=provinvias[provinvias>100]
-        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',width=500,height=500,color=provinvias.index ,title='¿que provincias se han quemado mas?')
+        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',width=500,height=500,color=provinvias.index ,title='¿qué provincias se han quemado más?')
         fig.update_coloraxes(showscale=False)
         fig.update_layout(showlegend=False)
         fig.update_xaxes(tickangle=45)
