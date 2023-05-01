@@ -41,7 +41,7 @@ viento = st.sidebar.slider('Cantidad de viento',1.0, 100.0)
 rh = st.sidebar.slider('Cantidad de humedad',1.0, 100.0)
 
 #python -m streamlit run incendios.py
-tab1, tab2,tab3= st.tabs (['panel BI','futuro','final])  
+tab1, tab2,tab3= st.tabs (['panel BI','futuro','final'])  
 
 #-----------------------------------------------------------------------------------POWER BI------
 with tab1:
