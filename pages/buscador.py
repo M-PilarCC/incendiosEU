@@ -53,7 +53,7 @@ with tab1:
                             center=dict(lat=meanlat, lon=meanlong), zoom=6,opacity=1,
                             mapbox_style="stamen-terrain",color_continuous_scale = 'Turbo')
             fig.update_coloraxes(showscale=False)
-            fig
+            st.plotly_chart(fig,use_container_width=True)
             
     with col2:
         st.markdown('')
@@ -66,7 +66,7 @@ with tab1:
         sums_df = pd.DataFrame({'Sumas': provsum})
         fig=px.bar(sums_df,x=sums_df.index,y=sums_df['Sumas'] ,template='plotly_dark',width=500,height=500,color=sums_df['Sumas'] , title=' Superficie total, cantidad de cada tipo, y cantidad de superficie de red natura quemada.')
         fig.update_coloraxes(showscale=False)
-        fig
+        st.plotly_chart(fig,use_container_width=True)
 
 with tab2:
     st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>INCENDIOS ÚLTIMOS 13 AÑOS POR PAÍS</center></h4>", unsafe_allow_html=True)
@@ -84,7 +84,7 @@ with tab2:
                                 mapbox_style="stamen-terrain",color_continuous_scale = 'Turbo')
                 fig.update_coloraxes(showscale=False)
                 fig.update_layout(showlegend=False)
-                fig
+                st.plotly_chart(fig,use_container_width=True)
     with col2:
             
             fig=px.scatter_polar(dfallincendios, r="AREA_HA", theta=dfallincendios['YEAR'].astype('str'),
@@ -92,7 +92,7 @@ with tab2:
                             color_discrete_sequence=px.colors.sequential.Plasma_r,width=500, height=500)
             fig.update_coloraxes(showscale=False)
             fig.update_layout(showlegend=False)
-            fig
+            st.plotly_chart(fig,use_container_width=True)
             
             
     col1,col2=st.columns(2)
@@ -103,7 +103,7 @@ with tab2:
         fig.update_coloraxes(showscale=False)
         fig.update_layout(showlegend=False)
         fig.update_xaxes(tickangle=45)
-        fig
+        st.plotly_chart(fig,use_container_width=True)
     
     with col2:
             # Cambiar el índice por los nombres de los meses
@@ -116,7 +116,7 @@ with tab2:
         fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500)
         fig.update_coloraxes(showscale=False)
         fig.update_layout(showlegend=False)
-        fig
+        st.plotly_chart(fig,use_container_width=True)
 
         
   
@@ -126,4 +126,4 @@ with tab2:
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(showlegend=False)
     fig.update_coloraxes(showscale=False)
-    fig
+    st.plotly_chart(fig,use_container_width=True)
