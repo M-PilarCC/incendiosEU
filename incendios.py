@@ -29,7 +29,10 @@ st.image("img/inc4.png",width=500, use_column_width=True)
 
 #---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
 dfm=pd.read_csv(r'data/dfprueba.csv')
+agree = st.checkbox('clik aqui para ver la web de origen de los datos')
 
+if agree:
+    st.write('[link](https://effis.jrc.ec.europa.eu/)')
 # --------------------------------------------------------------DATOS mapa-------------------------------------------------------------------------------------#
 lats2018 = dfm['LATITUD'].tolist() #guardamos la latitud
 lons2018 = dfm['LONGITUD'].tolist()#guarfdamos longitudes
