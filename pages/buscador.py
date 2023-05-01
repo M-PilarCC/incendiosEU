@@ -25,7 +25,7 @@ import plotly.graph_objects as go
 #python -m streamlit run incendios.py
 
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
-st.set_page_config(page_title='incendies', layout='wide',page_icon='🔥')
+st.set_page_config(page_title='incendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 dfm=pd.read_csv(r'data/dfpruebaHA.csv')
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
