@@ -62,7 +62,7 @@ with tab2:
     #Entrenamos modelo y elaboramos predicciones
     model.fit(X, y)
     prediccion=model.predict([[mes,temp,rh,viento,lluvia]])
-    st.markdown('cantidad de areas quemadas: {}'.format(str(prediccion[0])))
+    st.markdown('cantidad de hectáreas quemada: {}'.format(str(prediccion[0])))
     
 #------------------------------
     st.title('')
