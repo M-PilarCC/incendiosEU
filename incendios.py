@@ -47,11 +47,11 @@ with col1:
                         center=dict(lat=meanlat, lon=meanlong), zoom=2,opacity=0.5,
                         mapbox_style="stamen-terrain",color_continuous_scale = 'rainbow')
     fig.update_coloraxes(showscale=False)
-    fig
+    st.plotly_chart(fig,use_container_width=True)
 with col2:
     fig = px.scatter(dfm, x="YEAR", y="AREA_HA", color="Name", hover_name="Name",size='AREA_HA', template='plotly_dark',width=750,height=550,
                  title="Áreas quemadas por incendios forestales en EU (2000-2023)")
-    fig
+    st.plotly_chart(fig,use_container_width=True)
 
  # -------------------------------------Paises con mas numero de incendios-------------------------#     
 col1,col2=st.columns(2)
@@ -59,7 +59,7 @@ with col1:
     Incendiopais=dfm['Name'].value_counts()
     Incendiopais=Incendiopais[Incendiopais>300]
     fig = px.pie( values=Incendiopais.values, names=Incendiopais.index,  template='plotly_dark', title='¿Donde ocurren más incendios? +300',width=600,height=510)
-    fig
+    st.plotly_chart(fig,use_container_width=True)
 # --------------------------------------------------------------ha quemadas acomulativas--------------#
 with col2:
         dfacoi=dfm[['Name','AREA_HA','YEAR']]
@@ -67,7 +67,7 @@ with col2:
         df_acumulado = dfaco.groupby('Name')['AREA_HA'].cumsum().reset_index()
         dfacc=df_acumulado[df_acumulado['AREA_HA']>300000]
         fig = px.line(dfacc, x="YEAR", y='AREA_HA', color='Name',template='plotly_dark',width=750,height=550,title='qué paises tienen mas superficie quemada')
-        fig
+        st.plotly_chart(fig,use_container_width=True)
 
 
 # -------------------------------------------------------------porcentaje area quemada del pais-------#
@@ -77,7 +77,7 @@ dfkm2['percentage'] = dfkm2['AREA_HA']*(100/dfkm2['Total'])
 barchart=px.bar(dfkm2,x=dfkm2[' name'],y=dfkm2['Total'],width=1300, height=500,color=dfkm2['percentage'],template='plotly_dark',
                 text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentaje de superficie quemada')
 barchart.update_layout(showlegend=True)
-barchart
+st.plotly_chart(barchart,use_container_width=True)
 
 
 st.title('')
@@ -106,7 +106,7 @@ fig.add_trace(go.Bar(x=sumaño.index, y=sumaño['AREA_HA']),
 fig.add_trace(go.Scatter(x=sumaño.index, y=sumaño['medias']),row=2, col=1)
 
 fig.update_layout(showlegend=False, template='plotly_dark',width=1300, height=500)
-fig
+st.plotly_chart(fig,use_container_width=True)
 
 
 
@@ -123,7 +123,7 @@ col=[ 'BROADLEAVED', 'CONIFER', 'MIXED',
 dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
 tipovege=dfm["categoria_mayor"] .value_counts()
 fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegeaticon mayoritaria en la superficie quemada')
-fig
+st.plotly_chart(fig,use_container_width=True)
 
 
 # bosque=dfm[(dfm['categoria_mayor']=='BROADLEAVED')| (dfm['categoria_mayor']=='CONIFER')|(dfm['categoria_mayor']=='MIXED')]
