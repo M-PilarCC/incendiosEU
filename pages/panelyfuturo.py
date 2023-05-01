@@ -80,6 +80,6 @@ with tab2:
     st.plotly_chart(fig,use_container_width=True)
                            
                            
- with tab3:
-       st.title('')  
-       st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+with tab3:
+    st.title('')
+    st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
