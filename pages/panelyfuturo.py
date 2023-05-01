@@ -47,7 +47,7 @@ tab1, tab2= st.tabs (['panel BI','futuro'])
 with tab1:
     st.title('')
  
-    st.markdown(f'<div style="max-width:1024px"><iframe title="Report Section" width="100%" height="500"src="https://app.powerbi.com/view?r=eyJrIjoiNzE3M2M5YmYtYjYyNy00NDg2LWI3MTUtNzI0YjQ4ODFhNjZlIiwidCI6IjhhZWJkZGI2LTM0MTgtNDNhMS1hMjU1LWI5NjQxODZlY2M2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe></div>',
+    st.markdown(f'<div style="max-width:1024px;text-align: center;"><iframe title="Report Section" width="100%" height="500"src="https://app.powerbi.com/view?r=eyJrIjoiNzE3M2M5YmYtYjYyNy00NDg2LWI3MTUtNzI0YjQ4ODFhNjZlIiwidCI6IjhhZWJkZGI2LTM0MTgtNDNhMS1hMjU1LWI5NjQxODZlY2M2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe></div>',
             unsafe_allow_html=True,use_container_width=True)
 
 
