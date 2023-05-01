@@ -71,14 +71,10 @@ with tab2:
     st.title('')
     
     forecast = pd.read_csv('data/forecast.csv')
-    # Transformar los datos a una estructura larga usando pd.melt
     df_long = pd.melt(forecast, id_vars=['ds'], value_vars=['y', 'yhat1'], var_name='serie', value_name='valor')
-
-    # Crear el gráfico con Plotly Express
     fig = px.line(df_long, x='ds', y='valor', color='serie', title='Serie vs predicción por años en europa',template='plotly_dark',width=1000, height=500)
     fig.update_traces(name='Serie original', selector=dict(name='y'))
     fig.update_traces(name='Estimación', selector=dict(name='yhat1'))
     fig.update_xaxes(title='Años')
     fig.update_yaxes(title='nº de incendios')
-    # Mostrar el gráfico
-    fig
+    st.plotly_chart(fig,use_container_width=True)
