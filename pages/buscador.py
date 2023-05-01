@@ -37,7 +37,7 @@ tab1, tab2= st.tabs (["provincia",'pais'])
 filtro_pais = st.sidebar.selectbox("PAIS", dfm["Name"].unique())
 filtro_procinvia= st.sidebar.selectbox("PROVINCIA", dfm[dfm['Name']==filtro_pais]['PROVINCE'].unique())
 filtro_año= st.sidebar.selectbox("PROVINCIA", dfm[dfm['PROVINCE']==filtro_procinvia]['YEAR'].unique())
-agree = st.sidebar.checkbox('todos los años, de todo el pais')
+
 #------------------------------------------------------------------------------------map------------
 with tab1:
     
@@ -69,8 +69,7 @@ with tab1:
         fig
 
 with tab2:
-    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>INCENDIOS ULTIMOS AÑOS POR PAÍS</center></h4>", unsafe_allow_html=True)
-    st.title('Por pais enlos ultimos 13 años')
+    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>INCENDIOS ÚLTIMOS 13 AÑOS POR PAÍS</center></h4>", unsafe_allow_html=True)
     col1,col2=st.columns(2)
     with col1:
         
