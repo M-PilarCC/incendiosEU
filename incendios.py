@@ -23,13 +23,13 @@ import plotly.graph_objects as go
 
 #python3 -m streamlit run incendios.py
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
-st.set_page_config(page_title='incendies', layout='wide',page_icon='🔥')
+st.set_page_config(page_title='incendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
 #---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
 dfm=pd.read_csv(r'data/dfprueba.csv')
 
-agree = st.sidebar.checkbox('todos los años, de todo el pais')
+agree = st.sidebar.checkbox('para ver la web origen de los datos')
 if agree:
     st.write('[link](https://effis.jrc.ec.europa.eu/')
 # --------------------------------------------------------------DATOS mapa-------------------------------------------------------------------------------------#
@@ -126,42 +126,42 @@ fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dar
 fig
 
 
-bosque=dfm[(dfm['categoria_mayor']=='BROADLEAVED')| (dfm['categoria_mayor']=='CONIFER')|(dfm['categoria_mayor']=='MIXED')]
-sumañobosque=bosque.groupby('YEAR').sum()
-incendioYearbosque=bosque['YEAR'].value_counts()
-sumañobosque['cantidad_incendios']=incendioYearbosque
-sumañobosque['mediasb']= sumañobosque['AREA_HA']/ sumañobosque['cantidad_incendios']
-sumañobosque['mediasb']=sumañobosque['mediasb'].round(1)
+# bosque=dfm[(dfm['categoria_mayor']=='BROADLEAVED')| (dfm['categoria_mayor']=='CONIFER')|(dfm['categoria_mayor']=='MIXED')]
+# sumañobosque=bosque.groupby('YEAR').sum()
+# incendioYearbosque=bosque['YEAR'].value_counts()
+# sumañobosque['cantidad_incendios']=incendioYearbosque
+# sumañobosque['mediasb']= sumañobosque['AREA_HA']/ sumañobosque['cantidad_incendios']
+# sumañobosque['mediasb']=sumañobosque['mediasb'].round(1)
 
-agri=dfm[dfm['categoria_mayor']=='AGRIAREAS']
-sumaño=agri.groupby('YEAR').sum()
-incendioYear=agri['YEAR'].value_counts()
-sumaño['cantidad_incendios']=incendioYear
-sumaño['mediasag']= sumaño['AREA_HA']/ sumaño['cantidad_incendios']
-sumaño['mediasag']=sumaño['mediasag'].round(1)
+# agri=dfm[dfm['categoria_mayor']=='AGRIAREAS']
+# sumaño=agri.groupby('YEAR').sum()
+# incendioYear=agri['YEAR'].value_counts()
+# sumaño['cantidad_incendios']=incendioYear
+# sumaño['mediasag']= sumaño['AREA_HA']/ sumaño['cantidad_incendios']
+# sumaño['mediasag']=sumaño['mediasag'].round(1)
 
 
-scler=dfm[dfm['categoria_mayor']=='SCLEROPHYLLOUS']
-sumañoscler=scler.groupby('YEAR').sum()
-incendioYearscler=scler['YEAR'].value_counts()
-sumañoscler['cantidad_incendios']=incendioYearscler
-sumañoscler['mediasscler']= sumañoscler['AREA_HA']/ sumañoscler['cantidad_incendios']
-sumañoscler['mediasscler']=sumañoscler['mediasscler'].round(1)
+# scler=dfm[dfm['categoria_mayor']=='SCLEROPHYLLOUS']
+# sumañoscler=scler.groupby('YEAR').sum()
+# incendioYearscler=scler['YEAR'].value_counts()
+# sumañoscler['cantidad_incendios']=incendioYearscler
+# sumañoscler['mediasscler']= sumañoscler['AREA_HA']/ sumañoscler['cantidad_incendios']
+# sumañoscler['mediasscler']=sumañoscler['mediasscler'].round(1)
 
-trans=dfm[dfm['categoria_mayor']=='TRANSITIONAL']
-sumañotrans=trans.groupby('YEAR').sum()
-incendioYeartrans=trans['YEAR'].value_counts()
-sumañotrans['cantidad_incendios']=incendioYeartrans
-sumañotrans['mediastrans']= sumañotrans['AREA_HA']/ sumañotrans['cantidad_incendios']
-sumañotrans['mediastrans']=sumañotrans['mediastrans'].round(1)
+# trans=dfm[dfm['categoria_mayor']=='TRANSITIONAL']
+# sumañotrans=trans.groupby('YEAR').sum()
+# incendioYeartrans=trans['YEAR'].value_counts()
+# sumañotrans['cantidad_incendios']=incendioYeartrans
+# sumañotrans['mediastrans']= sumañotrans['AREA_HA']/ sumañotrans['cantidad_incendios']
+# sumañotrans['mediastrans']=sumañotrans['mediastrans'].round(1)
 
-other=dfm[dfm['categoria_mayor']=='OTHERNATLC']
-sumañoother=other.groupby('YEAR').sum()
-incendioYearother=other['YEAR'].value_counts()
-sumañoother['cantidad_incendios']=incendioYeartrans
-sumañoother['mediasother']= sumañoother['AREA_HA']/ sumañoother['cantidad_incendios']
-sumañoother['mediasother']=sumañoother['mediasother'].round(1)
-df_concatenado = pd.concat([sumaño, sumañobosque['mediasb'],sumañoscler['mediasscler'],sumañotrans['mediastrans'],sumañoother['mediasother']], axis=1)
-fig = px.line(df_concatenado, x=df_concatenado.index, y=['mediasag', 'mediasb',
-       'mediasscler', 'mediastrans', 'mediasother'],template='plotly_dark')
-fig
+# other=dfm[dfm['categoria_mayor']=='OTHERNATLC']
+# sumañoother=other.groupby('YEAR').sum()
+# incendioYearother=other['YEAR'].value_counts()
+# sumañoother['cantidad_incendios']=incendioYeartrans
+# sumañoother['mediasother']= sumañoother['AREA_HA']/ sumañoother['cantidad_incendios']
+# sumañoother['mediasother']=sumañoother['mediasother'].round(1)
+# df_concatenado = pd.concat([sumaño, sumañobosque['mediasb'],sumañoscler['mediasscler'],sumañotrans['mediastrans'],sumañoother['mediasother']], axis=1)
+# fig = px.line(df_concatenado, x=df_concatenado.index, y=['mediasag', 'mediasb',
+#        'mediasscler', 'mediastrans', 'mediasother'],template='plotly_dark')
+# fig
