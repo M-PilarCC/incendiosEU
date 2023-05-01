@@ -24,7 +24,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 
 #-----------------------------------------------------------------------------------header------------------------------------------------------------#
-st.set_page_config(page_title='incendies', layout='wide',page_icon='🔥')
+st.set_page_config(page_title='incendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
 dfreg = pd.read_csv('data/dfreg.csv')
