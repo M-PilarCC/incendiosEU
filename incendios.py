@@ -123,7 +123,7 @@ with col1:
            'SCLEROPHYLLOUS', 'TRANSITIONAL', 'OTHERNATLC', 'AGRIAREAS',
            'ARTIFSURF', 'OTHERLC']
     dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
-    dfmpie=dfmp.copy()
+    dfmpie=dfm.copy()
     dfmpie['categoria_mayor'].replace(['BROADLEAVED', 'CONIFER', 'MIXED'], 'FOREST', inplace=True)
 
     tipovege=dfmpie["categoria_mayor"] .value_counts()
