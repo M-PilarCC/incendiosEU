@@ -127,16 +127,13 @@ with col1:
     dfmpie['categoria_mayor'].replace(['BROADLEAVED', 'CONIFER', 'MIXED'], 'FOREST', inplace=True)
 
     tipovege=dfmpie["categoria_mayor"] .value_counts()
-    fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegetación mayoritaria en la superficie quemada')
+    fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Superficie que se han quemado')
     st.plotly_chart(fig,use_container_width=True)
 with col2: 
     fores=dfm[(dfm['categoria_mayor']=='BROADLEAVED')|(dfm['categoria_mayor']== 'CONIFER')|(dfm['categoria_mayor']== 'MIXED')]
     tipoforest=fores["categoria_mayor"] .value_counts()
-    fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark')
+    fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark',title='Bosques')
     st.plotly_chart(fig,use_container_width=True)
     
     
-grandes=dfm[dfm['AREA_HA']>14000]
-tipovege=grandes["categoria_mayor"].value_counts()
-fig = px.pie( values=tipovege.values, names=tipovege.index)
-st.plotly_chart(fig,use_container_width=True)
+
