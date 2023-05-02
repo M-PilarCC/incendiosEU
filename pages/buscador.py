@@ -100,7 +100,7 @@ with tab2:
         provinvias=dfallincendios['PROVINCE'].value_counts()
         provinvias=provinvias[provinvias>100]
         colores = px.colors.sequential.YlGn
-        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',width=500,height=500,color=provinvias.index ,title='¿qué provincias se han quemado más?',color_continuous_scale=colores)
+        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',width=500,height=500,title='¿qué provincias se han quemado más?',color_continuous_scale=colores)
         fig.update_coloraxes(showscale=False)
         fig.update_layout(showlegend=False)
         fig.update_xaxes(tickangle=45)
