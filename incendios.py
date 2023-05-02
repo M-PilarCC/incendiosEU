@@ -132,7 +132,7 @@ with col1:
 with col2: 
     fores=dfm[(dfm['categoria_mayor']=='BROADLEAVED')|(dfm['categoria_mayor']== 'CONIFER')|(dfm['categoria_mayor']== 'MIXED')]
     tipoforest=fores["categoria_mayor"] .value_counts()
-    colors = ['#2980B9', '#27AE60', '#1ABC9C']
-    fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark',title='Bosques',color=colors)
+    colores = px.colors.sequential.Sunsetdark
+    fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark',title='Bosques',color_discrete_sequence=colores)
     st.plotly_chart(fig,use_container_width=True)
     
