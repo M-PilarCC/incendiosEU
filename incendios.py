@@ -137,6 +137,6 @@ with col2:
     
     
 grandes=dfm[dfm['AREA_HA']>14000]
-tipovege=incendiograve["categoria_mayor"] .value_counts()
+tipovege=grandes["categoria_mayor"].value_counts()
 fig = px.pie( values=tipovege.values, names=tipovege.index)
 st.plotly_chart(fig,use_container_width=True)
