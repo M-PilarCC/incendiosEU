@@ -99,9 +99,9 @@ with tab2:
     with col1:
         provinvias=dfallincendios['PROVINCE'].value_counts()
         provinvias=provinvias[provinvias>100]
-        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',width=500,height=500,title='¿qué provincias se han quemado más?')
+        fig=px.bar(provinvias,x=provinvias.index,y=provinvias.values ,template='plotly_dark',color=provinvias.values,width=500,height=500,title='¿qué provincias se han quemado más?')
         fig.update_coloraxes(showscale=False)
-        fig.update_layout(showlegend=False)
+        fig.update_layout(xaxis_title='',yaxis_title=' ',showlegend=False)
         fig.update_xaxes(tickangle=45)
         st.plotly_chart(fig,use_container_width=True)
     
@@ -113,9 +113,9 @@ with tab2:
         
         incendiomonth=dfallincendios['MONTH'].value_counts().sort_index()
         incendiomonth.rename(index=dict(zip(range(1,13), nombres_meses)),inplace=True)
-        fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500)
+        fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500,title='Cantidad de incendios por meses')
         fig.update_coloraxes(showscale=False)
-        fig.update_layout(showlegend=False)
+        fig.update_layout(xaxis_title='',yaxis_title=' ',showlegend=False)
         st.plotly_chart(fig,use_container_width=True)
 
         
