@@ -73,9 +73,9 @@ with col2:
 # -------------------------------------------------------------porcentaje area quemada del pais-------#
 dfkm2=pd.read_csv('data/paiseslandcoverHA.csv')
 dfkm2['percentage'] = dfkm2['AREA_HA']*(100/dfkm2['Total'])
-
+colores = px.colors.sequential.Jet[3:]
 barchart=px.bar(dfkm2,x=dfkm2[' name'],y=dfkm2['Total'],width=1300, height=500,color=dfkm2['percentage'],template='plotly_dark',
-                text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentajes de superficie total')
+                text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentajes de superficie total',color_discrete_sequence=colores)
 barchart.update_layout(showlegend=True)
 barchart.update_coloraxes(showscale=False)
 barchart.update_xaxes(tickangle=45)
