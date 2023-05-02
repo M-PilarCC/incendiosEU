@@ -41,7 +41,7 @@ viento = st.sidebar.slider('Cantidad de viento',1.0, 100.0)
 rh = st.sidebar.slider('Cantidad de humedad',1.0, 100.0)
 
 #python -m streamlit run incendios.py
-tab1, tab2,tab3= st.tabs (['panel BI','futuro','final'])  
+tab1, tab2= st.tabs (['panel BI','futuro'])  
 
 #-----------------------------------------------------------------------------------POWER BI------
 with tab1:
@@ -79,7 +79,4 @@ with tab2:
     fig.update_yaxes(title='nº de incendios')
     st.plotly_chart(fig,use_container_width=True)
                            
-                           
-with tab3:
-    st.title('')
-    st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+
