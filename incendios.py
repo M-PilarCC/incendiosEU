@@ -58,7 +58,8 @@ col1,col2=st.columns(2)
 with col1:  
     Incendiopais=dfm['Name'].value_counts()
     Incendiopais=Incendiopais[Incendiopais>300]
-    fig = px.pie( values=Incendiopais.values, names=Incendiopais.index,  template='plotly_dark', title='¿Donde ocurren más incendios? +300',width=600,height=510)
+    colores = px.colors.sequential.YlOrRd
+    fig = px.pie( values=Incendiopais.values, names=Incendiopais.index,  template='plotly_dark', title='¿Donde ocurren más incendios? +300',width=600,height=510,color_discrete_sequence=colores)
     st.plotly_chart(fig,use_container_width=True)
 # --------------------------------------------------------------ha quemadas acomulativas--------------#
 with col2:
