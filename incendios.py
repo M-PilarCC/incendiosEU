@@ -127,6 +127,7 @@ with col1:
     dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
     dfmpie=dfm.copy()
     dfmpie['categoria_mayor'].replace(['BROADLEAVED', 'CONIFER', 'MIXED'], 'FOREST', inplace=True)
+    dfmpie['categoria_mayor'].replace(['OTHERNATLC', 'OTHERLC'], 'NATURALIND.', inplace=True)
 
     tipovege=dfmpie["categoria_mayor"] .value_counts()
     colores = px.colors.sequential.speed
