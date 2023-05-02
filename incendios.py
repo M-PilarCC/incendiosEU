@@ -117,52 +117,26 @@ st.title('')
 st.markdown("<h4 style='text-align: center; background-color:  orange; opacity:0.8'><center>ANÁLISIS SUPERFICIE QUEMADA</center></h4>", unsafe_allow_html=True)
 st.title('')
 
+col1,col2=st.columns(2)
+with col1: 
+    col=[ 'BROADLEAVED', 'CONIFER', 'MIXED',
+           'SCLEROPHYLLOUS', 'TRANSITIONAL', 'OTHERNATLC', 'AGRIAREAS',
+           'ARTIFSURF', 'OTHERLC']
+    dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
+    dfmpie=dfmp.copy()
+    dfmpie['categoria_mayor'].replace(['BROADLEAVED', 'CONIFER', 'MIXED'], 'FOREST', inplace=True)
 
-col=[ 'BROADLEAVED', 'CONIFER', 'MIXED',
-       'SCLEROPHYLLOUS', 'TRANSITIONAL', 'OTHERNATLC', 'AGRIAREAS',
-       'ARTIFSURF', 'OTHERLC']
-dfm["categoria_mayor"] = dfm[col].idxmax(axis=1)
-tipovege=dfm["categoria_mayor"] .value_counts()
-fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegetación mayoritaria en la superficie quemada')
+    tipovege=dfmpie["categoria_mayor"] .value_counts()
+    fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Tipo de vegetación mayoritaria en la superficie quemada')
+    st.plotly_chart(fig,use_container_width=True)
+with col2: 
+    fores=dfm[(dfm['categoria_mayor']=='BROADLEAVED')|(dfm['categoria_mayor']== 'CONIFER')|(dfm['categoria_mayor']== 'MIXED')]
+    tipoforest=fores["categoria_mayor"] .value_counts()
+    fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark')
+    st.plotly_chart(fig,use_container_width=True)
+    
+    
+grandes=dfm[dfm['AREA_HA']>14000]
+tipovege=incendiograve["categoria_mayor"] .value_counts()
+fig = px.pie( values=tipovege.values, names=tipovege.index)
 st.plotly_chart(fig,use_container_width=True)
-
-
-# bosque=dfm[(dfm['categoria_mayor']=='BROADLEAVED')| (dfm['categoria_mayor']=='CONIFER')|(dfm['categoria_mayor']=='MIXED')]
-# sumañobosque=bosque.groupby('YEAR').sum()
-# incendioYearbosque=bosque['YEAR'].value_counts()
-# sumañobosque['cantidad_incendios']=incendioYearbosque
-# sumañobosque['mediasb']= sumañobosque['AREA_HA']/ sumañobosque['cantidad_incendios']
-# sumañobosque['mediasb']=sumañobosque['mediasb'].round(1)
-
-# agri=dfm[dfm['categoria_mayor']=='AGRIAREAS']
-# sumaño=agri.groupby('YEAR').sum()
-# incendioYear=agri['YEAR'].value_counts()
-# sumaño['cantidad_incendios']=incendioYear
-# sumaño['mediasag']= sumaño['AREA_HA']/ sumaño['cantidad_incendios']
-# sumaño['mediasag']=sumaño['mediasag'].round(1)
-
-
-# scler=dfm[dfm['categoria_mayor']=='SCLEROPHYLLOUS']
-# sumañoscler=scler.groupby('YEAR').sum()
-# incendioYearscler=scler['YEAR'].value_counts()
-# sumañoscler['cantidad_incendios']=incendioYearscler
-# sumañoscler['mediasscler']= sumañoscler['AREA_HA']/ sumañoscler['cantidad_incendios']
-# sumañoscler['mediasscler']=sumañoscler['mediasscler'].round(1)
-
-# trans=dfm[dfm['categoria_mayor']=='TRANSITIONAL']
-# sumañotrans=trans.groupby('YEAR').sum()
-# incendioYeartrans=trans['YEAR'].value_counts()
-# sumañotrans['cantidad_incendios']=incendioYeartrans
-# sumañotrans['mediastrans']= sumañotrans['AREA_HA']/ sumañotrans['cantidad_incendios']
-# sumañotrans['mediastrans']=sumañotrans['mediastrans'].round(1)
-
-# other=dfm[dfm['categoria_mayor']=='OTHERNATLC']
-# sumañoother=other.groupby('YEAR').sum()
-# incendioYearother=other['YEAR'].value_counts()
-# sumañoother['cantidad_incendios']=incendioYeartrans
-# sumañoother['mediasother']= sumañoother['AREA_HA']/ sumañoother['cantidad_incendios']
-# sumañoother['mediasother']=sumañoother['mediasother'].round(1)
-# df_concatenado = pd.concat([sumaño, sumañobosque['mediasb'],sumañoscler['mediasscler'],sumañotrans['mediastrans'],sumañoother['mediasother']], axis=1)
-# fig = px.line(df_concatenado, x=df_concatenado.index, y=['mediasag', 'mediasb',
-#        'mediasscler', 'mediastrans', 'mediasother'],template='plotly_dark')
-# fig
