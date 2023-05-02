@@ -55,7 +55,7 @@ with tab1:
 #-----------------------------------------------------------------------------------POWER BI------
 with tab2:
     st.title('')
-    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCION SUPERFICIE </center></h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCIÓN SUPERFICIE </center></h4>", unsafe_allow_html=True)
     X,y=dfreg[['month','temp','RH','wind','rain']],dfreg['area'].values 
     #Instanciamos el modelo
     model = RandomForestRegressor(n_estimators=200, criterion='squared_error', max_depth=None, min_samples_split=2, verbose=1)
