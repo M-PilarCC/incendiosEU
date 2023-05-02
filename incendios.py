@@ -78,6 +78,7 @@ barchart=px.bar(dfkm2,x=dfkm2[' name'],y=dfkm2['Total'],width=1300, height=500,c
                 text=dfkm2['percentage'].apply(lambda x: '{0:1.2f}%'.format(x)),title='Porcentajes de superficie total')
 barchart.update_layout(showlegend=True)
 barchart.update_coloraxes(showscale=False)
+barchart.update_xaxes(tickangle=45)
 st.plotly_chart(barchart,use_container_width=True)
 
 
@@ -127,12 +128,13 @@ with col1:
     dfmpie['categoria_mayor'].replace(['BROADLEAVED', 'CONIFER', 'MIXED'], 'FOREST', inplace=True)
 
     tipovege=dfmpie["categoria_mayor"] .value_counts()
-    fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Superficie que se han quemado')
+    colores = px.colors.sequential.speed
+    fig = px.pie( values=tipovege.values, names=tipovege.index, template='plotly_dark',title='Superficie que se han quemado',color_discrete_sequence=colores)
     st.plotly_chart(fig,use_container_width=True)
 with col2: 
     fores=dfm[(dfm['categoria_mayor']=='BROADLEAVED')|(dfm['categoria_mayor']== 'CONIFER')|(dfm['categoria_mayor']== 'MIXED')]
     tipoforest=fores["categoria_mayor"] .value_counts()
-    colores = px.colors.sequential.Purpor
+    colores = px.colors.sequential.Greens_r
     fig = px.pie( values=tipoforest.values, names=tipoforest.index, template='plotly_dark',title='Bosques',color_discrete_sequence=colores)
     st.plotly_chart(fig,use_container_width=True)
     
