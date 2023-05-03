@@ -124,6 +124,6 @@ with tab2:
         lat = 'LATITUD',     color='MONTH',
                   color_continuous_scale=px.colors.cyclical.IceFire, zoom=5,height=500,width=500)
     fig.update_layout(mapbox_style="open-street-map")
-    fig.update_layout(showlegend=False)
+    fig.update_layout(showlegend=True)
     fig.update_coloraxes(showscale=False)
     st.plotly_chart(fig,use_container_width=True)
