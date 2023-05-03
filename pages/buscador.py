@@ -116,6 +116,7 @@ with tab2:
         fig = px.bar(incendiomonth, x=incendiomonth.index,y=incendiomonth.values, color=incendiomonth.values,template='plotly_dark',width=500,height=500,title='Cantidad de incendios por meses')
         fig.update_coloraxes(showscale=False)
         fig.update_layout(xaxis_title='',yaxis_title=' ',showlegend=False)
+        fig.update_xaxes(tickangle=45)
         st.plotly_chart(fig,use_container_width=True)
 
         
