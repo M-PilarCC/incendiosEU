@@ -1,6 +1,4 @@
 #----------------------------LIBRERIAS-----------------------------#
-
-#SI NO  SE IMPORTA PIP INSTALL ...
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,29 +6,27 @@ import pandas as pd
 import seaborn as sns
 import  plotly_express as px
 import plotly.graph_objects as go
-
+from plotly.subplots import make_subplots
+from sklearn.ensemble import RandomForestRegressor
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-import jinja2
 import streamlit.components.v1 as components
 
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 
-# from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-
-
-
-#-----------------------------------------------------------------------------------header------------------------------------------------------------#
+#ENCABEZADO
 st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
-dfreg = pd.read_csv('data/dfreg.csv')
+#DATA
+def data():
+       dfreg = pd.read_csv('data/dfreg.csv')
+       return dfreg
+dfreg=data()
+
+#SIDEBAR
+#diccionario de meses
 dicc_month={'mar':3, 'oct': 10, 'aug':8, 'sep':9, 'apr':4, 'jun':5, 'jul':6, 'feb':7, 'jan': 1,
        'dec':12, 'may':5, 'nov':11}
-#-----------------------------------------------------------------------------------sidebar-------
 mes = st.sidebar.selectbox("Mes del año", dicc_month.keys())
 for i in dicc_month.keys():
     if mes==i:
@@ -40,7 +36,7 @@ temp = st.sidebar.slider('Cantidad de temperatura',1.0, 60.0)
 viento = st.sidebar.slider('Cantidad de viento',1.0, 100.0)
 rh = st.sidebar.slider('Cantidad de humedad',1.0, 100.0)
 
-#python -m streamlit run incendios.py
+#TABS
 tab1, tab2= st.tabs (['panel BI','futuro'])  
 
 #-----------------------------------------------------------------------------------POWER BI------
