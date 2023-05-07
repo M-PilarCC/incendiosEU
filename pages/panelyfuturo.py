@@ -17,11 +17,16 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
+
+
 #DATA
 def data():
        dfreg = pd.read_csv('data/dfreg.csv')
-       return dfreg
-dfreg=data()
+       forecast = pd.read_csv('data/forecast.csv')
+       return dfreg, forecast
+dfreg,forecast = data()
+
+
 
 #SIDEBAR
 #diccionario de meses
@@ -36,10 +41,12 @@ temp = st.sidebar.slider('Cantidad de temperatura',1.0, 60.0)
 viento = st.sidebar.slider('Cantidad de viento',1.0, 100.0)
 rh = st.sidebar.slider('Cantidad de humedad',1.0, 100.0)
 
-#TABS
+
+#PESTAÑAS
 tab1, tab2= st.tabs (['panel BI','futuro'])  
 
-#-----------------------------------------------------------------------------------POWER BI------
+
+#pestaña 1 , POWER BI
 with tab1:
     st.title('')
  
@@ -48,8 +55,9 @@ with tab1:
 
 
 
-#-----------------------------------------------------------------------------------POWER BI------
+#pestaña 2, MODELOS DE REGRESIÓN Y LINEA TEMPORAL
 with tab2:
+     #modelo de REGRESIÓN
     st.title('')
     st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCIÓN SUPERFICIE </center></h4>", unsafe_allow_html=True)
     X,y=dfreg[['month','temp','RH','wind','rain']],dfreg['area'].values 
@@ -59,16 +67,13 @@ with tab2:
     model.fit(X, y)
     prediccion=model.predict([[mes,temp,rh,viento,lluvia]])
     cantidad_quemada = round(prediccion[0], 3)
-#     st.markdown('cantidad de hectáreas quemada: {}'.format(str(prediccion[0])))
-    cantidad_quemada = round(prediccion[0], 3)
     st.markdown('Cantidad de hectáreas quemadas: {}'.format(str(cantidad_quemada)))
-#------------------------------
+
+    #LINEA TEMPORAL
     st.title('')
-   
-    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCION NÚMERO INCENDIOS ANUAL </center></h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; background-color: orange; opacity:0.8'><center>PREDICCIÓN NÚMERO INCENDIOS ANUAL </center></h4>", unsafe_allow_html=True)
     st.title('')
     
-    forecast = pd.read_csv('data/forecast.csv')
     df_long = pd.melt(forecast, id_vars=['ds'], value_vars=['y', 'yhat1'], var_name='serie', value_name='valor')
     fig = px.line(df_long, x='ds', y='valor', color='serie', title='Serie vs predicción por años en europa',template='plotly_dark',width=1000, height=500)
     fig.update_traces(name='Serie original', selector=dict(name='y'))
