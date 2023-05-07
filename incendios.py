@@ -17,8 +17,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
-#---------------------------------------------------------------READ CSV--
--------------------------------------------------------------------------------------#
+#---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
 
     
 dfm=pd.read_csv(r'data/dfprueba.csv')
