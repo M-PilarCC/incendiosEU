@@ -117,6 +117,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 st.title('')
 st.markdown("<h4 style='text-align: center; background-color:  orange; opacity:0.8'><center>ANÁLISIS SUPERFICIE QUEMADA</center></h4>", unsafe_allow_html=True)
+st.markdown("hola")
 st.title('')
 
 col1,col2=st.columns(2)
