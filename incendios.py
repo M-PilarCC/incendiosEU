@@ -1,6 +1,4 @@
 #----------------------------LIBRERIAS-----------------------------#
-
-#SI NO  SE IMPORTA PIP INSTALL ...
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,25 +6,21 @@ import pandas as pd
 import seaborn as sns
 import  plotly_express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-import jinja2
-
-
 import streamlit.components.v1 as components
 
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 
-
-#python3 -m streamlit run incendios.py
-#-----------------------------------------------------------------------------------header------------------------------------------------------------#
+#Encabezado de pagina
 st.set_page_config(page_title='IncendiosEU', layout='wide',page_icon='🔥')
 st.image("img/inc4.png",width=500, use_column_width=True)
 
-#---------------------------------------------------------------READ CSV---------------------------------------------------------------------------------------#
+#---------------------------------------------------------------READ CSV--
+-------------------------------------------------------------------------------------#
+
+    
 dfm=pd.read_csv(r'data/dfprueba.csv')
 
 agree = st.sidebar.checkbox('para ver la web origen de los datos')
